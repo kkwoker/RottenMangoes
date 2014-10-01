@@ -1,9 +1,9 @@
 ADMIN USERS MANAGEMENT
-
+<%= paginate @users %>
 <hr>
 <% @users.each do |user| %>
 	<p>
-	<%= user.firstname %>   <%= user.lastname %>   <%= user.email %>
+	<%= link_to user.firstname, admin_user_path(user) %>   <%= user.lastname %>   <%= user.email %>
 	</p>
 <% end %>
 <hr>
