@@ -1,0 +1,9 @@
+ADMIN USERS MANAGEMENT
+
+<hr>
+<% @users.each do |user| %>
+	<p>
+	<%= user.firstname %>   <%= user.lastname %>   <%= user.email %>
+	</p>
+<% end %>
+<hr>
