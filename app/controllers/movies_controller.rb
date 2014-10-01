@@ -16,10 +16,13 @@ class MoviesController < ApplicationController
   end
 
   def create
+    uploader = PosterUploader.new
+    # uploader.store!(params[:image])
+
   	@movie = Movie.new(movie_params)
 
   	if @movie.save
-  		redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!}"
+  		redirect_to root_path, notice: "#{@movie.title} was submitted successfully!}"
   	else
   		render :new
   	end
@@ -45,7 +48,7 @@ class MoviesController < ApplicationController
 
   def movie_params
   	params.require(:movie).permit(
-  		:title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
+  		:title, :release_date, :director, :runtime_in_minutes, :description, :image, :remote_image_url
   	)
   end
 end
