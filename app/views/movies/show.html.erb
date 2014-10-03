@@ -8,7 +8,7 @@
 	<h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
 	<p><%= @movie.description %></p>
 	<hr>
-	<small>Submitted by: </small>
+	<small>Submitted by: <%=@movie.submitter%></small>
 </div>
 
 <div class="col-md-12 text-center">

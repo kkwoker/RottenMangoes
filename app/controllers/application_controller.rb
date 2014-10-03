@@ -15,10 +15,18 @@ class ApplicationController < ActionController::Base
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-  helper_method :current_user
 
   def is_admin?
-    current_user.admin
+    current_user.admin?
   end
-  helper_method :is_admin?
+
+  def mimicing?
+    actual_user.present?
+  end
+
+  def actual_user
+    @actual_user ||= User.where(admin: true).find_by(id: session[:admin_id]) if session[:admin_id]
+  end
+
+  helper_method :current_user, :is_admin?, :mimicing?, :actual_user
 end

@@ -60,6 +60,11 @@ class Movie < ActiveRecord::Base
   #   end
   # end
 
+  def submitter
+    user = User.find_by(id: self.user_id)
+    user.full_name if user
+  end
+
   protected
 
   def release_date_is_in_the_future
