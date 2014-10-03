@@ -1,0 +1,29 @@
+
+<div class="col-md-offset-1"></div>
+
+<div class="col-md-6 movie-row" >
+ 	<div>
+ 		<div class="col-md-4">
+ 			<h6><%= link_to  movie.title , movie_path(movie)%></h6>
+ 		</div>
+ 		<div class="col-md-3">
+		  <span class="img-thumbnail"><%= link_to image_tag(movie.image_url(:thumb)) , movie_path(movie)%>	</span>
+		</div>
+	  <div class="col-md-5">
+	  	<h6>
+	  	<p class="movie-release-date"><%= movie.release_date.strftime("%Y") if movie.release_date%></p>
+	  
+		  <p>
+		  <div class="movie-director">
+		  	Dir. <%= movie.director %> 
+		  </div>
+		  <div class="movie-minutes">
+		   	<%= movie.runtime_in_minutes %> minutes
+		  </div>
+		  </p>
+		  <p class="movie-description"><%= movie.description %></p>
+		  </div>
+	  	</h6>
+	</div>
+</div>
+

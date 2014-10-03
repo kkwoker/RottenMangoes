@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*body {
+	margin-left: 50px;
+}
+*/
+h1 {
+	font-family: Verdana;
+}
+
+footer {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	height: 20px;
+	width: 30%;
+	background:#999;
+}
+.img-thumbnail {
+	max-width: none;
+}
+
+body {
+	background: url(http://upload.wikimedia.org/wikipedia/commons/4/4f/Iba%2CZambalesjf9268_05.JPG);
+	background-size: 100%;
+}
+
+.container {
+	background-color: White;
+	box-shadow: 5px 5px 5px #3F3F3F;
+	padding: 15px 35px 0px 35px;
+}
+
+hr{
+	box-shawdow: 3px 2px 2px #6F6F6F;
+}
+
+.submit {
+	float: left;
+}
+
+.search {
+	float: right;
+}

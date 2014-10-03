@@ -1,3 +1,54 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+.each-movie {
+	display: inline-flex;
+}
+
+.movie-title{
+	font-size: 20px;
+}*/
+
+/*.col1{
+	float: left;
+	width: 196px;
+	margin-right: 20px;
+	min-height: 10px;
+}
+
+.col2 {
+	float: left;
+	width: 180px;
+	margin-right: 20px;
+	min-height: 10px;
+}*/
+/*
+.col3 {
+	float: left;
+	width: 190px;
+	font-size: 13px;
+	color: #575757;
+}
+
+*/
+/*
+.movie-row {
+	margin-bottom: 20px;
+}*/
+
+
+.movie-row{
+	margin-bottom: 10px;
+}
+
+.movie-description{
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+
+}

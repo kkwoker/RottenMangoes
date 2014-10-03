@@ -4,6 +4,9 @@ class Admin::UsersController < UsersController
 
 
 	def index
+		# session[:user_id] = session[:admin_id]
+		session[:user_id] = session[:admin_id].to_i if session[:admin_id]
+		session[:admin_id] = nil
 		@users = User.all.page(params[:page]).per(5)
 	end	
 
@@ -28,7 +31,16 @@ class Admin::UsersController < UsersController
 	end
 
 	def user_params
-		  	params.require(:user).permit(:email, :firstname, :lastname)
+		params.require(:user).permit(:email, :firstname, :lastname, :admin)
+	end
+
+	def destroy
+		#email user
+
+		@user = User.find(params[:id])
+		UserMailer.delete_user_email(@user).deliver
+		@user.destroy
+		redirect_to admin_users_path
 	end
 
 end

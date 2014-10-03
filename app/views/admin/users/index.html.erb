@@ -3,7 +3,10 @@ ADMIN USERS MANAGEMENT
 <hr>
 <% @users.each do |user| %>
 	<p>
-	<%= link_to user.firstname, admin_user_path(user) %>   <%= user.lastname %>   <%= user.email %>
+	<%= link_to user.firstname, admin_user_path(user) %>   <%= user.lastname %>   <%= user.email %> 
+	<% if user.id != session[:user_id] %>
+		<%= link_to "Ghost", admin_impersonators_path(ghost_id: user.id, admin_id: session[:user_id]), method: "POST" %>
+	<% end %>
 	</p>
 <% end %>
 <hr>

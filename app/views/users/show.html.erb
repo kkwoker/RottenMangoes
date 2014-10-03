@@ -1,0 +1,14 @@
+
+<%=@user.full_name%>
+
+
+
+<hr>
+<table>
+	<tbody>
+	Movies uploaded:
+		<% @movies.each do |movie| %>
+		 <%= render partial: 'movies/movie', locals: {movie: movie} %>
+		<% end %>
+	</tbody>
+</table>

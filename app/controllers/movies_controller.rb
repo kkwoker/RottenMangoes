@@ -1,6 +1,17 @@
 class MoviesController < ApplicationController
   def index
-  	@movies = Movie.all
+
+    # if params[:title] || params[:director] || params[:duration]
+    #   @movies = Movie.search(params[:title], params[:director], params[:duration]).order("created_at DESC")
+    # else
+    #   @movies = Movie.all.order('created_at DESC')
+    # end
+
+    @search = Movie.all
+    @search = @search.search(params[:search]) if params[:search]
+    @search = @search.runtime(params[:duration]) if !params[:duration]
+
+    @movies = @search.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -17,9 +28,11 @@ class MoviesController < ApplicationController
 
   def create
     uploader = PosterUploader.new
-    # uploader.store!(params[:image])
 
+    
   	@movie = Movie.new(movie_params)
+
+    @movie[:user_id] = session[:user_id]
 
   	if @movie.save
   		redirect_to root_path, notice: "#{@movie.title} was submitted successfully!}"
@@ -43,6 +56,8 @@ class MoviesController < ApplicationController
   	@movie.destroy
   	redirect_to movies_path
   end
+
+
 
   protected
 
