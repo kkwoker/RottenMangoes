@@ -1,6 +1,6 @@
-<ul class="nav nav-pills">
-<h1>Rotten Mangoes</h1>
 
+<h1>Rotten Mangoes</h1>
+<ul class="nav nav-pills">
 	<% if session[:user_id] %>
 		<li class="col-md-12"><%= link_to current_user.firstname , user_path(current_user)%></li>
 		<li class="col-md-12"><%= link_to "Submit a movie!", new_movie_path %></li>
