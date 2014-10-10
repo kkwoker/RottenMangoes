@@ -10,8 +10,8 @@ class Movie < ActiveRecord::Base
   BETWEEN_90_120 = "2"
   GREATER_THAN_120 = "3"
 
-  scope :review, -> {where("watched = true")}
-  scope :wishlist, ->{where("watched = false")}
+  scope :watched, -> {where(watched: true)}
+  scope :wishlist, ->{where(watched: false)}
   scope :search, -> (query){  where("title like ? or director like ?", "%#{query}%", "%#{query}%")}
   scope :runtime, -> (runtime_query) { 
     case runtime_query

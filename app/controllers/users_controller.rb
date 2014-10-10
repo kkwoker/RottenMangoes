@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @movies = @user.movies.reverse
+    @movies = @user.movies.watched.reverse
   end
 
   def create
