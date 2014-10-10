@@ -6,7 +6,6 @@
 <hr>
 <table>
 	<tbody>
-	Movies uploaded:
 		<% @movies.each do |movie| %>
 		 <%= render partial: 'movies/movie', locals: {movie: movie} %>
 		<% end %>

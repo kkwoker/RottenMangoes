@@ -1,15 +1,33 @@
-<h1 class="col-md-3 ">Rotten Mangoes</h1>
+<ul class="nav nav-pills">
+<h1>Rotten Mangoes</h1>
 
+	<% if session[:user_id] %>
+		<li><%= link_to current_user.firstname , user_path(current_user)%></li>
+		<li><%= link_to "Submit a movie review!", new_movie_path %></li>
+		<li><%= link_to "Log out", session_path("current"), method: :delete %></li>
 
-<div class="search col-md-offset-6 col-md-3">
-	<%= form_tag(movies_path, :method => "get", id: "search-form") do %>
-	  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-	  <%= select_tag(:duration, options_for_select([
+	<% else %>
+		<li><%= link_to "Log in", new_session_path %></li>
+		<li><%= link_to "Sign up", new_user_path %></li>
+	<% end %>
+
+	<form id="search_user_form">
+		<%# text_field_tag :search, params[:search], placeholder: "Search a user" %>
+		<input id="searchQ" type="text" placeholder="Search a user">
+		<% submit_tag %>
+	</form>
+	<div id="user_search_result">
+	</div>
+	<%# link_to "Back", movies_path %>
+</ul>
+
+<!-- 	<%# form_tag(movies_path, :method => "get", id: "search-form") do %>
+	  <%# text_field_tag :search, params[:search], placeholder: "Search" %>
+	  <%# select_tag(:duration, options_for_select([
 	                [],
 	  							['minutes < 90', 1], 
 	  							['90 < minutes < 120', 2], 
 	  							['120 < minutes', 3]])) %>
 
-	  <%= submit_tag "Search", :name => nil %>
-	<% end %>
-</div>
+	  <%# submit_tag "Search", :name => nil %>
+	<%# end %> -->

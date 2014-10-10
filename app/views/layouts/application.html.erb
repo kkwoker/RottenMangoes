@@ -10,10 +10,11 @@
 <% flash.each do |key, value| %>
 	<%= content_tag(:div, value) %>
 <% end %>
-
-<div class="container">
+<div class="col-md-2">
 	<%= render 'layouts/header' %>
-	<%= yield %>
+</div >
+<div class="col-md-10">
+<%= yield %>
 </div>
 <%= render 'layouts/footer' %>
 </body>

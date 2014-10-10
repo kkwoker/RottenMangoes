@@ -18,6 +18,19 @@ class UsersController < ApplicationController
   	end
   end
 
+  def index
+    searches = params["search"].split(" ")
+    users = User.all
+    searches.each do |search|
+      users = users.search(search)
+    end
+    @users_found = {data: users}.to_json
+    respond_to do |format|
+      format.json { render json: @users_found }
+     end
+  end
+
+
   protected
 
   def user_params

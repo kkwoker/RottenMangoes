@@ -18,6 +18,25 @@
 //= require bootstrap-sprockets
 
 
-// $(document).ready(function(){
+$(document).ready(function(){
 //   $(".movie-description").ellipsis();
-// });
+	
+	$("#search_user_form").on("submit", function(event){
+		var queryString = $("#searchQ").val();
+		event.preventDefault();
+		$.ajax({
+			type: "GET",
+			url: "/users",
+			dataType: "json",
+			data: {search: queryString}
+		})
+		.done(function(response){
+			console.log(response.data);
+			for(var i in response.data){
+				console.log(response.data[i].firstname);
+				$("#user_search_result").append(response.data[i].firstname + " " + response.data[i].lastname + "</br>");
+			}
+		})
+	})
+});
+
