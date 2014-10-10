@@ -2,20 +2,25 @@
 <h1>Rotten Mangoes</h1>
 
 	<% if session[:user_id] %>
-		<li><%= link_to current_user.firstname , user_path(current_user)%></li>
-		<li><%= link_to "Submit a movie review!", new_movie_path %></li>
-		<li><%= link_to "Log out", session_path("current"), method: :delete %></li>
+		<li class="col-md-12"><%= link_to current_user.firstname , user_path(current_user)%></li>
+		<li class="col-md-12"><%= link_to "Submit a movie!", new_movie_path %></li>
+		<li class="col-md-12"><%= link_to "Log out", session_path("current"), method: :delete %></li>
 
 	<% else %>
 		<li><%= link_to "Log in", new_session_path %></li>
 		<li><%= link_to "Sign up", new_user_path %></li>
 	<% end %>
 
-	<form id="search_user_form">
+	<!-- <form id="search_user_form" method="GET", action="/users"> -->
 		<%# text_field_tag :search, params[:search], placeholder: "Search a user" %>
-		<input id="searchQ" type="text" placeholder="Search a user">
-		<% submit_tag %>
-	</form>
+		<!-- <input id="searchQ" type="text" placeholder="Search a user"> -->
+		<%# submit_tag %>
+	<!-- </form> -->
+
+	<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Search users" %>
+		<% submit_tag "Search", :name => nil%>
+	<% end %>
 	<div id="user_search_result">
 	</div>
 	<%# link_to "Back", movies_path %>

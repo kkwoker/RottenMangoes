@@ -22,10 +22,7 @@ class MoviesController < ApplicationController
 
   def create
     uploader = PosterUploader.new
-
-    
   	@movie = Movie.new(movie_params)
-
     @movie[:user_id] = session[:user_id]
 
   	if @movie.save
@@ -57,7 +54,7 @@ class MoviesController < ApplicationController
 
   def movie_params
   	params.require(:movie).permit(
-  		:title, :release_date, :director, :runtime_in_minutes, :review, :image
+  		:title, :release_date, :director, :runtime_in_minutes, :review, :image, :watched
   	)
   end
 end
