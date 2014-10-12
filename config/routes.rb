@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 		resources :users, only: [:new, :create, :show, :index]
 		resource :session, only: [:new, :create, :destroy]
 
+		get '/user/:id/wishlist', to: 'users#wishlist', as: :wishlist
+
 		root to: 'movies#index'
 
 		namespace :admin do

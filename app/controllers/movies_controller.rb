@@ -1,11 +1,11 @@
 class MoviesController < ApplicationController
   def index
 
-    @search = Movie.all
-    @search = @search.search(params[:search]) if params[:search] && !params[:search].empty?
-    @search = @search.runtime(params[:duration]) if params[:duration] && !params[:duration].empty?
-    @movies = @search.order(release_date: :desc).page(params[:page]).per(10)
-
+    @search = Movie.watched
+    @search = @search.search(params[:movie_query]) if params[:movie_query] && !params[:movie_query].empty?
+    # @search = @search.runtime(params[:duration]) if params[:duration] && !params[:duration].empty?
+    # @movies = @search.order(release_date: :desc).page(params[:page]).per(10)
+    @movies = @search.order(updated_at: :desc).page(params[:page]).per(4)
   end
 
   def show

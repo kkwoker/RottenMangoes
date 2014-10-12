@@ -1,5 +1,4 @@
-
-<h1>Rotten Mangoes</h1>
+<h1><%= link_to "Rotten Mangoes", root_path %></h1>
 <ul class="nav nav-pills">
 	<% if session[:user_id] %>
 		<li class="col-md-12"><%= link_to current_user.firstname , user_path(current_user)%></li>
@@ -11,19 +10,16 @@
 		<li><%= link_to "Sign up", new_user_path %></li>
 	<% end %>
 
-	<!-- <form id="search_user_form" method="GET", action="/users"> -->
-		<%# text_field_tag :search, params[:search], placeholder: "Search a user" %>
-		<!-- <input id="searchQ" type="text" placeholder="Search a user"> -->
-		<%# submit_tag %>
-	<!-- </form> -->
-
 	<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-		<%= text_field_tag :search, params[:search], placeholder: "Search users" %>
-		<% submit_tag "Search", :name => nil%>
+		<%= text_field_tag :user_query, params[:user_query], placeholder: "Search users" %>
+		<% submit_tag "Search user", :name => nil%>
 	<% end %>
-	<div id="user_search_result">
-	</div>
-	<%# link_to "Back", movies_path %>
+
+	<%= form_tag(movies_path, :method => "get", id: "search-movies") do %>
+		<%= text_field_tag :movie_query, params[:movie_query], placeholder: "Search movie reviews" %>
+		<% submit_tag "Search movie", :name => nil %>
+	<% end %>
+
 </ul>
 
 <!-- 	<%# form_tag(movies_path, :method => "get", id: "search-form") do %>

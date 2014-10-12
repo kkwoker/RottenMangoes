@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @movies = @user.movies.watched.reverse
   end
 
+  def wishlist
+    @user = User.find(params[:id])
+    @movies = @user.movies.wishlist.reverse
+  end
+
   def create
   	@user = User.new(user_params)
   	if @user.save
@@ -19,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    searches = params["search"].split(" ")
+    searches = params[:user_query].split(" ")
     users = User.all
     searches.each do |search|
       users = users.search(search)
@@ -30,6 +35,7 @@ class UsersController < ApplicationController
       # format.json { render json: @users_found }
      # end
   end
+
 
 
   protected
